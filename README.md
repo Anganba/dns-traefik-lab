@@ -1,4 +1,4 @@
-# ZenoraHost Infrastructure - DNS & Reverse Proxy Stack
+# DNS & Reverse Proxy Infrastructure
 
 > A self-hosted DNS and reverse proxy environment built with **BIND9**, **Traefik**, **Namecheap ACME DNS verification**, and **Docker Compose**.
 
