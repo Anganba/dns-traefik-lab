@@ -118,7 +118,7 @@ https://traefik.yea.zenorahost.com
 
 ---
 
-### 5️⃣ Deploy Nginx & Portainer (example apps)
+### 6️⃣ Deploy Nginx & Portainer (example apps)
 Deploy your services using Traefik labels:
 ```bash
 docker compose -f nginx/docker-compose.yaml up -d
