@@ -138,13 +138,6 @@ Common issues:
 - Portainer dashboard running behind Traefik
 ![Portainer UI](https://github.com/Anganba/ImagesHostedOnGitHub/blob/584a5bbd3b662971b46e57e0fd224d9fb1c26c54/dns-traefik-lab-img/portainer.png)
 
----
-
-## 📘 Lessons Learned
-- Mastered DNS server setup (SOA, NS, A, wildcard records)
-- Understood how ACME DNS challenges verify domain ownership
-- Built reverse proxy routing using Traefik labels
-- Automated SSL renewal without manual cert management
 
 ---
 
@@ -179,4 +172,4 @@ MIT License — freely use, modify, and share.
 ---
 
 ## 🌐 Author
-**Anganba** — DevOps | Linux Server Administrator | Cybersecurity Enthusiast
+**Anganba Singha** — DevOps | Linux Server Administrator | Cybersecurity Enthusiast
