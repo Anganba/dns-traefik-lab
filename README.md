@@ -1,11 +1,11 @@
 # DNS & Reverse Proxy Infrastructure
 
-> A self-hosted DNS and reverse proxy environment built with **BIND9**, **Traefik**, **Namecheap ACME DNS verification**, and **Docker Compose**.
+> A complete self-hosted DNS and reverse proxy solution with automated SSL management using **BIND9**, **Traefik**, and **Docker Compose**. Built as a practical infrastructure lab project demonstrating DNS, reverse proxy routing, and TLS automation with Namecheap's API and Let's Encrypt.
 
 ---
 
 ## 🚀 Overview
-This project is a complete lab setup for automating SSL certificate issuance using **Let's Encrypt** and managing internal/external traffic via **Traefik**, all routed through a **custom BIND9 DNS server** hosted locally.
+This project replicates a small-scale production setup for managing internal and external services with your own DNS authority and automated HTTPS via Traefik. The system runs locally or on a VPS, allowing dynamic certificate generation through the Namecheap DNS API.
 
 The system was designed and tested on **Ubuntu Server 24.04 LTS** using **Docker** containers, with services communicating across a shared `frontend` network.
 
@@ -179,6 +179,21 @@ dns-traefik-lab/
 │   └── docker-compose.yml
 └── README.md
 ```
+---
+
+## 🧠 What You’ll Learn
+- Setting up an **authoritative DNS server** with custom zones
+- Using **DNS-based ACME challenges** for HTTPS automation
+- Managing **reverse proxy routes** dynamically with Docker labels
+- Deploying self-contained, production-like infrastructure stacks
+
+---
+
+## 🧩 Troubleshooting
+- **404 Page Not Found** → Incorrect router rule or internal service port mismatch
+- **ACME errors** → Domain not delegated to BIND9 nameservers or DNS cache delay
+- **TLS handshake error** → Check API credentials and Namecheap DNS propagation
+- **Permission denied (acme.json)** → Run `chmod 600 data/certs/acme.json`
 
 ---
 
