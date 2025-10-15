@@ -55,6 +55,19 @@ nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
 
 ---
 
+
+
+## 🧱 Folder Overview
+Show what each folder does (instead of embedding configs):| Folder         | Purpose                                                                                                               |
+| -------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `bind9/`       | Contains configuration for the DNS server. Defines custom zones and authoritative records for `zenorahost.com`.       |
+| `traefik/`     | Houses Traefik reverse proxy setup, ACME certificate resolver, and environment variables for Namecheap DNS challenge. |
+| `nginx/`       | Example backend web service for testing routing and SSL certificate issuance.                                         |
+| `portainer/`   | (Optional) Web UI to manage Docker containers visually.                                                               |
+| `.env.example` | Template for API credentials and domain environment variables. Copy and rename to `.env` before running.              |
+| -------------- | --------------------------------------------------------------------------------------------------------------------- |
+
+---
 ## 🛠 Setup & Deployment
 
 ### 1️⃣ Prerequisites
