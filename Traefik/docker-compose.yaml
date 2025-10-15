@@ -1,0 +1,38 @@
+---
+services:
+  traefik:
+    image: traefik:v3.5.3
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
+      - ./data/certs/:/var/traefik/certs/:rw
+    networks:
+      - frontend
+    restart: unless-stopped
+    environment:
+        - NAMECHEAP_API_USER=${NAMECHEAP_API_USER}
+        - NAMECHEAP_API_KEY=${NAMECHEAP_API_KEY}
+        - NAMECHEAP_API_URL=https://api.namecheap.com/xml.response
+    labels:
+      - traefik.enable=true
+
+      #  HTTP router for Traefik dashboard redirect to HTTPS
+      - "traefik.http.routers.traefik.rule=Host(`traefik.yea.zenorahost.com`)"
+      - "traefik.http.routers.traefik.entrypoints=web"
+      - "traefik.http.routers.traefik.middlewares=redirect-to-https"
+      # HTTPS router
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.yea.zenorahost.com`)"
+      - "traefik.http.routers.traefik-secure.entrypoints=websecure"
+      - "traefik.http.routers.traefik-secure.tls.certresolver=namecheap"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+
+      # Middleware to redirect HTTP → HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+networks:
+  frontend:
+    external: true
+

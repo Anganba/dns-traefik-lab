@@ -1,0 +1,21 @@
+$TTL 2d
+
+$ORIGIN zenorahost.com.
+
+@               IN      SOA     ns.zenorahost.com. info.zenorahost.com. (
+                                20251015    ; serial
+                                12h         ; refresh
+                                15m         ; retry
+                                3w          ; expire
+                                2h          ; minimum ttl 
+                                )
+                IN      NS      ns.zenorahost.com.
+
+ns              IN      A       192.168.68.129
+; -- add dns records below
+
+yea             IN      A       192.168.68.129
+*.yea           IN      A       192.168.68.129
+
+
+
