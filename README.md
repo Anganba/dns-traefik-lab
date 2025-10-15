@@ -79,7 +79,7 @@ docker compose -f bind9/docker-compose.yaml up -d
 ```
 Verify with:
 ```bash
-dig @192.168.68.129 nginx.yea.zenorahost.com
+dig @YOUR_DNS_SERVER_IP nginx.yea.zenorahost.com
 ```
 
 ---
