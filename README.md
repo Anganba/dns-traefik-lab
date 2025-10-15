@@ -132,8 +132,11 @@ Common issues:
 - `dig` DNS resolution showing correct IP mapping
 ![DNS Verification](https://github.com/Anganba/ImagesHostedOnGitHub/blob/6f545125cdf5952b9d1d70a1e3bae77f955e3237/dns-traefik-lab-img/DNS_verification.png)
 - Traefik dashboard with routers + TLS certs
-- Browser view with HTTPS padlock
+![Traefik Dashboard](https://github.com/Anganba/ImagesHostedOnGitHub/blob/727c6bbd7b58c6b2a93dafa7e8a694993eb30886/dns-traefik-lab-img/traefik.png)
+- NGINX Browser view with HTTPS padlock
+![NGINX HTTPS Result](https://github.com/Anganba/ImagesHostedOnGitHub/blob/d8ec622763c0339949da6742d48752bbd697bcc7/dns-traefik-lab-img/nginx.png)
 - Portainer dashboard running behind Traefik
+![Portainer UI](https://github.com/Anganba/ImagesHostedOnGitHub/blob/584a5bbd3b662971b46e57e0fd224d9fb1c26c54/dns-traefik-lab-img/portainer.png)
 
 ---
 
