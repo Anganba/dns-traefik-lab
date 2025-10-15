@@ -7,7 +7,7 @@
 ## 🚀 Overview
 This project is a complete lab setup for automating SSL certificate issuance using **Let's Encrypt** and managing internal/external traffic via **Traefik**, all routed through a **custom BIND9 DNS server** hosted locally.
 
-The system was designed and tested on **AlmaLinux 9** using **Podman/Docker** containers, with services communicating across a shared `frontend` network.
+The system was designed and tested on **Ubuntu Server 24.04 LTS** using **Docker** containers, with services communicating across a shared `frontend` network.
 
 ---
 
@@ -27,23 +27,23 @@ The system was designed and tested on **AlmaLinux 9** using **Podman/Docker** co
 ## 🧠 Architecture Diagram
 ```
                 ┌─────────────────────┐
-                │     Client (Web)   │
-                └─────────┬──────────┘
+                │     Client (Web)    │
+                └─────────┬───────────┘
                           │ HTTPS (443)
                           ▼
-                ┌─────────────────────┐
-                │      Traefik        │
-                │  Reverse Proxy + SSL│
-                └─────────┬──────────┘
+                ┌──────────────────────┐
+                │      Traefik         │
+                │  Reverse Proxy + SSL │
+                └─────────┬────────────┘
                           │ Internal network (frontend)
           ┌───────────────┴───────────────┐
           │                               │
-  ┌──────────────┐              ┌────────────────┐
-  │   Nginx App  │              │   Portainer UI │
-  └──────────────┘              └────────────────┘
+  ┌──────────────┐              ┌─────────────────┐
+  │   Nginx App  │              │   Portainer UI  │
+  └──────────────┘              └─────────────────┘
           │                               │
           ▼                               ▼
-     nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
+nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
 
                 │
                 ▼
@@ -60,13 +60,13 @@ The system was designed and tested on **AlmaLinux 9** using **Podman/Docker** co
 ### 1️⃣ Prerequisites
 - A domain name (e.g. `zenorahost.com`)
 - Access to **Namecheap API key & username**
-- Installed: Docker / Podman, Docker Compose
-- Local or public Linux server (tested on AlmaLinux 9)
+- Installed: Docker, Docker Compose
+- Local or public Linux server (tested on Ubuntu Server 24.04 LTS)
 
 ### 2️⃣ Clone Repository
 ```bash
-git clone https://github.com/<your-username>/zenorahost-infra.git
-cd zenorahost-infra
+git clone https://github.com/anganba/dns-traefik-lab.git
+cd dns-traefik-lab
 ```
 
 ### 3️⃣ Configure DNS Server (BIND9)
