@@ -190,15 +190,44 @@ dns-traefik-lab/
 ---
 
 ## 🧩 Troubleshooting
-- **404 Page Not Found** → Incorrect router rule or internal service port mismatch
-- **ACME errors** → Domain not delegated to BIND9 nameservers or DNS cache delay
-- **TLS handshake error** → Check API credentials and Namecheap DNS propagation
-- **Permission denied (acme.json)** → Run `chmod 600 data/certs/acme.json`
+
+### 🔹 Permission Issues (first-time setup)
+If BIND9 fails to read/write files under `config`, `cache`, or `records`, run these commands **once**:
+```bash
+# Quick method (less secure)
+sudo chmod -R 777 ./config ./cache ./records
+
+# Recommended secure method
+sudo chown -R 100:101 ./config ./cache ./records
+sudo chmod -R 755 ./config ./cache ./records
+```
+**When to use:**
+- Happens when BIND9 cannot access zone files or cache directories inside the container.
+- Usually appears as `permission denied` errors or missing zone load logs.
+
+### 🔹 404 Page Not Found
+- Usually caused by an incorrect router rule or wrong container port mapping.
+- Double-check the `traefik.http.routers.<service>.rule` and internal port.
+
+### 🔹 ACME / Certificate Errors
+- Verify that your domain (`zenorahost.com`) nameservers point to your BIND9 instance.
+- Check that the zone file matches the public DNS entries.
+
+### 🔹 TLS Handshake Error
+- Ensure Namecheap API credentials are valid and propagated.
+- Wait for DNS records to update (can take up to 10–15 min).
 
 ---
 
-## 🧾 License
-MIT License — freely use, modify, and share.
+## 🏁 Future Enhancements
+- Add HAProxy or Cloudflare DNS integration
+- Enable IPv6 support in BIND9 and Traefik
+- Add Grafana + Prometheus monitoring
+
+---
+
+## 🪪 License
+MIT License — Free for educational and demonstration use.
 
 ---
 
