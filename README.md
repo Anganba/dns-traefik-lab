@@ -73,6 +73,22 @@ Fill in your Namecheap credentials inside .env.
 cp traefik/.env.example traefik/.env
 ```
 
+### ⚠️ Important Configuration Note — Update Your IP Address
+The IP address 192.168.68.129 used in this repository is specific to my local VM, where the BIND9 DNS server runs.
+You must replace this with the IP address of your own DNS server or host machine in the following files:
+```bash
+bind9/config/zenorahost-com.zone
+Any A-records or zone file entries referencing 192.168.68.129
+```
+Example:
+```bash
+ns      IN  A   192.168.68.129  # Change this to your server IP
+yea     IN  A   192.168.68.129  # Change this too
+*.yea   IN  A   192.168.68.129  # And this
+
+```
+If you skip this step, DNS queries and SSL validation will fail.
+
 ### 4️⃣ Start the DNS Server:
 ```bash
 docker compose -f bind9/docker-compose.yaml up -d
