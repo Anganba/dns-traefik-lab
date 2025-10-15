@@ -45,12 +45,12 @@ The system was designed and tested on **Ubuntu Server 24.04 LTS** using **Docker
           ▼                               ▼
 nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
 
-                │
-                ▼
-       ┌────────────────┐
-       │    BIND9 DNS   │
-       │   ns.zenorahost│
-       └────────────────┘
+          │                               │                          
+          ▼                               ▼   
+┌────────────────────────────────────────────────────┐
+│                    BIND9 DNS                       │
+│                  ns.zenorahost                     │
+└────────────────────────────────────────────────────┘
 ```
 
 ---
