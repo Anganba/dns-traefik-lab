@@ -130,6 +130,7 @@ Common issues:
 
 ## 📸 Demo Screenshots
 - `dig` DNS resolution showing correct IP mapping
+![DNS Verification](dns-traefik-lab-img/DNS_verification.png)
 - Traefik dashboard with routers + TLS certs
 - Browser view with HTTPS padlock
 - Portainer dashboard running behind Traefik
