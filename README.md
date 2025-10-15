@@ -167,7 +167,7 @@ Common issues:
 
 ## 📂 Project Structure
 ```text
-.
+dns-traefik-lab/
 ├── bind9
 │   ├── config/
 │   │   ├── named.conf
