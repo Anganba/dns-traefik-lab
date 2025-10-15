@@ -53,21 +53,6 @@ nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
 └────────────────────────────────────────────────────┘
 ```
 
----
-
-
-
-## 🧱 Folder Overview
-Show what each folder does (instead of embedding configs):| Folder         | Purpose                                                                          
-| -------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `bind9/`       | Contains configuration for the DNS server. Defines custom zones and authoritative records for `zenorahost.com`.       |
-| `traefik/`     | Houses Traefik reverse proxy setup, ACME certificate resolver, and environment variables for Namecheap DNS challenge. |
-| `nginx/`       | Example backend web service for testing routing and SSL certificate issuance.                                         |
-| `portainer/`   | (Optional) Web UI to manage Docker containers visually.                                                               |
-| `.env.example` | Template for API credentials and domain environment variables. Copy and rename to `.env` before running.              |
-| -------------- | --------------------------------------------------------------------------------------------------------------------- |
-
----
 ## 🛠 Setup & Deployment
 
 ### 1️⃣ Prerequisites
@@ -82,44 +67,24 @@ git clone https://github.com/anganba/dns-traefik-lab.git
 cd dns-traefik-lab
 ```
 
-### 3️⃣ Configure DNS Server (BIND9)
-Edit your zone file in `bind9/config/zenorahost-com.zone`:
+### 3️⃣ Configure environment:
+Fill in your Namecheap credentials inside .env.
 ```bash
-$ORIGIN zenorahost.com.
-@       IN SOA  ns.zenorahost.com. info.zenorahost.com. (
-            20251015 ; serial
-            12h      ; refresh
-            15m      ; retry
-            3w       ; expire
-            2h       ; minimum ttl
-            )
-        IN NS   ns.zenorahost.com.
-ns      IN A    192.168.68.129
-yea     IN A    192.168.68.129
-*.yea   IN A    192.168.68.129
+cp traefik/.env.example traefik/.env
 ```
 
-Update `named.conf`:
+### 4️⃣ Start the DNS Server:
 ```bash
-zone "zenorahost.com" IN {
-  type master;
-  file "/etc/bind/zenorahost-com.zone";
-  allow-update { none; };
-};
+docker compose -f bind9/docker-compose.yaml up -d
 ```
-
-Then start DNS container:
-```bash
-docker compose -f bind9/docker-compose.yml up -d
-```
-Test resolution:
+Verify with:
 ```bash
 dig @192.168.68.129 nginx.yea.zenorahost.com
 ```
 
 ---
 
-### 4️⃣ Setup Traefik Reverse Proxy
+### 5️⃣ Setup Traefik Reverse Proxy
 Configure `.env` in `traefik/` folder:
 ```env
 NAMECHEAP_API_USER=yournamecheapusername
@@ -128,11 +93,11 @@ NAMECHEAP_API_URL=https://api.namecheap.com/xml.response
 ```
 Run Traefik:
 ```bash
-docker compose -f traefik/docker-compose.yml up -d
+docker compose -f traefik/docker-compose.yaml up -d
 ```
 Verify dashboard at:
 ```
-https://yea.zenorahost.com:8080/dashboard/#/
+https://traefik.yea.zenorahost.com
 ```
 
 ---
@@ -140,14 +105,15 @@ https://yea.zenorahost.com:8080/dashboard/#/
 ### 5️⃣ Deploy Nginx & Portainer (example apps)
 Deploy your services using Traefik labels:
 ```bash
-docker compose -f nginx/docker-compose.yml up -d
-docker compose -f portainer/docker-compose.yml up -d
+docker compose -f nginx/docker-compose.yaml up -d
+docker compose -f portainer/docker-compose.yaml up -d
 ```
 
 Then access:
 ```
 https://nginx.yea.zenorahost.com
 https://portainer.yea.zenorahost.com
+https://traefik.yea.zenorahost.com
 ```
 
 ---
@@ -209,4 +175,4 @@ MIT License — freely use, modify, and share.
 ---
 
 ## 🌐 Author
-**Anganba** — DevOps | Linux Server Administration | Cybersecurity Enthusiast
+**Anganba** — DevOps | Linux Server Administrator | Cybersecurity Enthusiast
