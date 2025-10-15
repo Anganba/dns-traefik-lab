@@ -58,7 +58,7 @@ nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
 
 
 ## 🧱 Folder Overview
-Show what each folder does (instead of embedding configs):| Folder         | Purpose                                                                                                               |
+Show what each folder does (instead of embedding configs):| Folder         | Purpose                                                                          
 | -------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `bind9/`       | Contains configuration for the DNS server. Defines custom zones and authoritative records for `zenorahost.com`.       |
 | `traefik/`     | Houses Traefik reverse proxy setup, ACME certificate resolver, and environment variables for Namecheap DNS challenge. |
