@@ -49,7 +49,7 @@ nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
           ▼                               ▼   
 ┌────────────────────────────────────────────────────┐
 │                    BIND9 DNS                       │
-│                  ns.zenorahost                     │
+│                ns.zenorahost.com                   │
 └────────────────────────────────────────────────────┘
 ```
 
