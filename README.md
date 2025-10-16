@@ -216,7 +216,13 @@ sudo chmod -R 755 ./config ./cache ./records
 ### 🔹 TLS Handshake Error
 - Ensure Namecheap API credentials are valid and propagated.
 - Wait for DNS records to update (can take up to 10–15 min).
+- Sometimes if TLS handshake fails it might be issues with the file permission
+Change ownership and permissions so Traefik can manage the file.
+If your container runs as root (most Traefik images do by default):
+```
+chmod 600 ./data/certs/namecheap-acme.json
 
+```
 ---
 
 ## 🏁 Future Enhancements
