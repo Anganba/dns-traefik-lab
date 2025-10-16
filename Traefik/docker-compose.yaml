@@ -16,7 +16,7 @@ services:
     environment:
         - NAMECHEAP_API_USER=${NAMECHEAP_API_USER}
         - NAMECHEAP_API_KEY=${NAMECHEAP_API_KEY}
-        - NAMECHEAP_API_URL=https://api.namecheap.com/xml.response
+        - NAMECHEAP_API_ENDPOINT=api.namecheap.com
     labels:
       - traefik.enable=true
 
