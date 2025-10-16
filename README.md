@@ -96,10 +96,13 @@ Example:
 ns      IN  A   192.168.68.129  # Change this to your server IP
 yea     IN  A   192.168.68.129  # Change this too
 *.yea   IN  A   192.168.68.129  # And this
-
 ```
 If you skip this step, DNS queries and SSL validation will fail.
 
+Also Your Namecheap account must have:
+API access enabled under “Profile → Tools → Namecheap API Access”.
+Your host’s public IP added to the “API Whitelist IPs” section.
+If you don't have your local VMs' IP or VPS IP get whitelisted in the Namecheap API section, TLS Handshake will fail.
 ### Run the deploy script:
 ```bash
 sudo ./deploy.sh up
