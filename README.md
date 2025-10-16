@@ -109,7 +109,7 @@ NAMECHEAP_API_URL=https://api.namecheap.com/xml.response
 ```
 Run Traefik:
 ```bash
-docker compose -f traefik/docker-compose.yaml up -d
+docker compose -f Traefik/docker-compose.yaml up -d
 ```
 Verify dashboard at:
 ```
@@ -122,7 +122,7 @@ https://traefik.yea.zenorahost.com
 Deploy your services using Traefik labels:
 ```bash
 docker compose -f nginx/docker-compose.yaml up -d
-docker compose -f portainer/docker-compose.yaml up -d
+docker compose -f Portainer-Server/docker-compose.yaml up -d
 ```
 
 Then access:
