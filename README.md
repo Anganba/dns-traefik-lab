@@ -59,6 +59,10 @@ nginx.yea.zenorahost.com     portainer.yea.zenorahost.com
 - A domain name (e.g. `zenorahost.com`)
 - Access to **Namecheap API key & username**
 - Installed: Docker, Docker Compose
+```bash
+sudo apt install docker.io
+sudo apt install docker-compose
+```
 - Local or public Linux server (tested on Ubuntu Server 24.04 LTS)
 
 ### 2️⃣ Clone Repository
@@ -72,7 +76,12 @@ Fill in your Namecheap credentials inside .env.
 ```bash
 cp Traefik/.env.example Traefik/.env
 ```
-
+Configure `.env` in `traefik/` folder:
+```env
+NAMECHEAP_API_USER=yournamecheapusername
+NAMECHEAP_API_KEY=yourapikey
+NAMECHEAP_API_URL=https://api.namecheap.com/xml.response
+```
 ### ⚠️ Important Configuration Note — Update Your IP Address
 The IP address 192.168.68.129 used in this repository is specific to my local VM, where the BIND9 DNS server runs.
 You must replace this with the IP address of your own DNS server or host machine in the following files:
@@ -89,43 +98,39 @@ yea     IN  A   192.168.68.129  # Change this too
 ```
 If you skip this step, DNS queries and SSL validation will fail.
 
-### 4️⃣ Start the DNS Server:
+### Run the deploy script:
 ```bash
-docker compose -f bind9/docker-compose.yaml up -d
+sudo ./deploy.sh up
 ```
-Verify with:
+If this ERROR pops up: Network frontend declared as external, but could not be found. 
+Please create the network manually using `sudo docker network create frontend` and try again.
+
+Make sure to restart the container using this command:
+`sudo ./deploy.sh restart`
+
+### The usage of the deploy script:
+```
+Usage: ./deploy.sh {up|down|restart|status}
+  up       Start all services
+  down     Stop and remove all services
+  restart  Restart all services
+  status   Show running containers and health info  
+```
+
+
+### 4️⃣ Verify the DNS Server:
+
 ```bash
 dig @YOUR_DNS_SERVER_IP nginx.yea.zenorahost.com
 ```
 
----
-
-### 5️⃣ Setup Traefik Reverse Proxy
-Configure `.env` in `traefik/` folder:
-```env
-NAMECHEAP_API_USER=yournamecheapusername
-NAMECHEAP_API_KEY=yourapikey
-NAMECHEAP_API_URL=https://api.namecheap.com/xml.response
-```
-Run Traefik:
-```bash
-docker compose -f Traefik/docker-compose.yaml up -d
-```
-Verify dashboard at:
+Verify Traefik dashboard at:
 ```
 https://traefik.yea.zenorahost.com
 ```
 
----
-
-### 6️⃣ Deploy Nginx & Portainer (example apps)
-Deploy your services using Traefik labels:
-```bash
-docker compose -f nginx/docker-compose.yaml up -d
-docker compose -f Portainer-Server/docker-compose.yaml up -d
-```
-
-Then access:
+### 6️⃣ Verify Nginx & Portainer (example apps)
+To access:
 ```
 https://nginx.yea.zenorahost.com
 https://portainer.yea.zenorahost.com
@@ -177,6 +182,7 @@ dns-traefik-lab/
 │   └── docker-compose.yml
 ├── portainer
 │   └── docker-compose.yml
+└── deploy.sh
 └── README.md
 ```
 ---
