@@ -70,7 +70,7 @@ cd dns-traefik-lab
 ### 3️⃣ Configure environment:
 Fill in your Namecheap credentials inside .env.
 ```bash
-cp traefik/.env.example traefik/.env
+cp Traefik/.env.example Traefik/.env
 ```
 
 ### ⚠️ Important Configuration Note — Update Your IP Address
