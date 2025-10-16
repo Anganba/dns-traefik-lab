@@ -136,7 +136,8 @@ https://nginx.yea.zenorahost.com
 https://portainer.yea.zenorahost.com
 https://traefik.yea.zenorahost.com
 ```
-
+### ⚠️ Important Configuration Note — Update Your DNS Settings
+If you want to access those `https://traefik.yea.zenorahost.com` in your windows or local machine, make sure to point your DNS settings preferred DNS to `VM's IP where DNS server is running` and as alternative DNS use `1.1.1.1` or `8.8.8.8` .
 ---
 
 ## 🔒 SSL Certificate Automation
