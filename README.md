@@ -72,6 +72,8 @@ cd dns-traefik-lab
 ```
 
 ### 3️⃣ Configure environment:
+Make sure to give this permission:
+`sudo chmod 600 Traefik/data/certs/namecheap-acme.json`
 Fill in your Namecheap credentials inside .env.
 ```bash
 cp Traefik/.env.example Traefik/.env
