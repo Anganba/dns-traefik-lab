@@ -102,7 +102,7 @@ If you skip this step, DNS queries and SSL validation will fail.
 Also Your Namecheap account must have:
 API access enabled under “Profile → Tools → Namecheap API Access”.
 Your host’s public IP added to the “API Whitelist IPs” section.
-If you don't have your local VMs' IP or VPS IP get whitelisted in the Namecheap API section, TLS Handshake will fail.
+If you don't have your local VMs' public IP or VPS IP get whitelisted in the Namecheap API section, TLS Handshake will fail.
 ### Run the deploy script:
 ```bash
 sudo ./deploy.sh up
@@ -142,8 +142,8 @@ https://portainer.yea.zenorahost.com
 https://traefik.yea.zenorahost.com
 ```
 ### ⚠️ Important Configuration Note — Update Your DNS Settings
-If you want to access those `https://traefik.yea.zenorahost.com` in your windows or local machine, make sure to point your DNS settings preferred DNS to `VM's IP where DNS server is running` and as alternative DNS use `1.1.1.1` or `8.8.8.8` .
 ---
+If you want to access those `https://traefik.yea.zenorahost.com` in your windows or local machine, make sure to point your DNS settings preferred DNS to `VM's IP where DNS server is running` and as alternative DNS use `1.1.1.1` or `8.8.8.8` .
 
 ## 🔒 SSL Certificate Automation
 Traefik uses **Let's Encrypt DNS-01 challenge** to request certificates via Namecheap DNS.
