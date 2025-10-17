@@ -194,12 +194,6 @@ dns-traefik-lab/
 ```
 ---
 
-## 🧠 What You’ll Learn
-- Setting up an **authoritative DNS server** with custom zones
-- Using **DNS-based ACME challenges** for HTTPS automation
-- Managing **reverse proxy routes** dynamically with Docker labels
-- Deploying self-contained, production-like infrastructure stacks
-
 ---
 
 ## 🧩 Troubleshooting
