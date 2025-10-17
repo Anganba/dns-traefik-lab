@@ -105,6 +105,7 @@ Your host’s public IP added to the “API Whitelist IPs” section.
 If you don't have your local VMs' public IP or VPS IP get whitelisted in the Namecheap API section, TLS Handshake will fail.
 ### Run the deploy script:
 ```bash
+sudo chmod +x deploy.sh
 sudo ./deploy.sh up
 ```
 If this ERROR pops up: Network frontend declared as external, but could not be found. 
