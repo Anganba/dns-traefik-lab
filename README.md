@@ -223,7 +223,7 @@ sudo chmod -R 755 ./config ./cache ./records
 Change ownership and permissions so Traefik can manage the file.
 If your container runs as root (most Traefik images do by default):
 ```
-chmod 600 ./data/certs/namecheap-acme.json
+chmod 600 Traefik/data/certs/namecheap-acme.json
 
 ```
 ---
