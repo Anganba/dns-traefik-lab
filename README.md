@@ -192,10 +192,6 @@ dns-traefik-lab/
 └── deploy.sh
 └── README.md
 ```
----
-
----
-
 ## 🧩 Troubleshooting
 
 ### 🔹 Permission Issues (first-time setup)
