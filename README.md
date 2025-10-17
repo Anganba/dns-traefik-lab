@@ -68,6 +68,8 @@ sudo apt install docker-compose
 ### 2️⃣ Clone Repository
 ```bash
 git clone https://github.com/anganba/dns-traefik-lab.git
+```
+```bash
 cd dns-traefik-lab
 ```
 
@@ -106,6 +108,8 @@ If you don't have your local VMs' public IP or VPS IP get whitelisted in the Nam
 ### Run the deploy script:
 ```bash
 sudo chmod +x deploy.sh
+```
+```bash
 sudo ./deploy.sh up
 ```
 If this ERROR pops up: Network frontend declared as external, but could not be found. 
