@@ -102,12 +102,21 @@ ns      IN  A   192.168.68.129  # Change this to your server IP
 yea     IN  A   192.168.68.129  # Change this too
 *.yea   IN  A   192.168.68.129  # And this
 ```
+Run these commands on your Ubuntu host to fix some permission issues:
+```bash
+sudo chown -R root:root bind9/config bind9/cache bind9/records
+```
+```bash
+sudo chmod -R 755 bind9/config bind9/cache bind9/records
+```
+
 If you skip this step, DNS queries and SSL validation will fail.
 
 Also Your Namecheap account must have:
 API access enabled under “Profile → Tools → Namecheap API Access”.
 Your host’s public IP added to the “API Whitelist IPs” section.
 If you don't have your local VMs' public IP or VPS IP get whitelisted in the Namecheap API section, TLS Handshake will fail.
+
 ### Run the deploy script:
 ```bash
 sudo chmod +x deploy.sh
@@ -208,8 +217,8 @@ If BIND9 fails to read/write files under `config`, `cache`, or `records`, run th
 sudo chmod -R 777 ./config ./cache ./records
 
 # Recommended secure method
-sudo chown -R 100:101 ./config ./cache ./records
-sudo chmod -R 755 ./config ./cache ./records
+sudo chown -R 100:101 bind9/config bind9/cache bind9/records
+sudo chmod -R 755 bind9/config bind9/cache bind9/records
 ```
 **When to use:**
 - Happens when BIND9 cannot access zone files or cache directories inside the container.
