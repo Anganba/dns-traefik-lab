@@ -81,6 +81,9 @@ Fill in your Namecheap credentials inside .env.
 cp Traefik/.env.example Traefik/.env
 ```
 Configure `.env` in `traefik/` folder:
+```bash
+nano Traefik/.env
+```
 ```env
 NAMECHEAP_API_USER=yournamecheapusername
 NAMECHEAP_API_KEY=yourapikey
